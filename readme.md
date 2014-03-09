@@ -4,7 +4,7 @@ Activity Logger
 A simple activity logger for Laravel.
 
 [![Build Status](https://travis-ci.org/Jeroen-G/activity-logger.png?branch=master)](https://travis-ci.org/Jeroen-G/activity-logger)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/badges/quality-score.png?s=a0e8e2ce3e6f07bb1171e5257b3224a60427bb3c)](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/badges/quality-score.png?s=bd15e13c2a26810c8109bc1f4d7569c06f5d916c)](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/)
 [![Latest Stable Version](https://poser.pugx.org/jeroen-g/activity-logger/v/stable.png)](https://packagist.org/packages/jeroen-g/activity-logger)
 
 ## Installation ##
