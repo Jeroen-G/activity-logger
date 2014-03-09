@@ -43,4 +43,24 @@ class Activity extends \Eloquent {
 	{
 	    // Do nothing.
 	}
+
+	/**
+	 * Encode the context array into json.
+	 *
+	 * @return array
+	 */
+	public function setContextAttribute($value)
+	{
+		return json_encode($value);
+	}
+
+	/**
+	 * Decode the context into an array.
+	 *
+	 * @return array
+	 */
+	public function getContextAttribute($value)
+	{
+		return json_decode($value);
+	}
 }
