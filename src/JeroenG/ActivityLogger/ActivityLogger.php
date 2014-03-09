@@ -28,8 +28,41 @@ class ActivityLogger {
 		}
 		Activity::create(array(
 			'message' => $message,
-			'context' => json_encode($context),
+			'context' => $context,
 			'created_at' => $date
 		));
+	}
+
+	/**
+	 * Get all data from one log entry.
+	 *
+	 * @param int $id The id of the log.
+	 * @return object
+	 */
+	public function getLog($id)
+	{
+		return Activity::find($id);
+	}
+
+	/**
+	 * Get all data from all logs.
+	 *
+	 * @return object
+	 */
+	public function getAllLogs()
+	{
+		return Activity::all();
+	}
+
+	/**
+	 * Get all logs created within a given timespan.
+	 *
+	 * @param timestamp $start Every log created after this date.
+	 * @param timestamp $end Every log created before this date.
+	 * @return array
+	 */
+	public function getLogsBetween($start, $end)
+	{
+		return Activity::whereBetween('created_at', array($start, $end))->get();
 	}
 }

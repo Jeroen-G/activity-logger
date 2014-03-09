@@ -38,3 +38,29 @@ Activity::log($message, $context, $date);
 ```
 
 Message is required, the rest is optional. $context is an array which can contain any data you want to save. $date is a timestamp, it defaults to the current timestamp.
+
+### Get all logs ###
+
+```php
+Activity::getAllLogs();
+```
+
+### Get one log ###
+
+You only need to pass the id of a log.
+
+
+```php
+Activity::getLog(1);
+```
+
+### Get all logs within timespan ###
+
+```php
+$yesterday = Carbon\Carbon::yesterday();
+$tomorrow = Carbon\Carbon::tomorrow();
+
+Activity::getLogsBetween($yesterday, $tomorrow);
+```
+
+This function needs two parameters, all logs created between these timestamps are returned.
