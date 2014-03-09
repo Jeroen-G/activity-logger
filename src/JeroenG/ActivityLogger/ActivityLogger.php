@@ -26,7 +26,7 @@ class ActivityLogger {
 		if(is_null($date)) {
 			$date = new \DateTime;
 		}
-		Activity::create(array(
+		return Activity::create(array(
 			'message' => $message,
 			'context' => $context,
 			'created_at' => $date
