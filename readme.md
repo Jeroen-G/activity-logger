@@ -64,3 +64,11 @@ Activity::getLogsBetween($yesterday, $tomorrow);
 ```
 
 This function needs two parameters, all logs created between these timestamps are returned.
+
+### Get the most recent logs ###
+
+```php
+Activity::getRecentLogs(10);
+```
+
+The default of 5 logs is used when no number is passed.

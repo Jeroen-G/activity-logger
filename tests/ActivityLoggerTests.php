@@ -154,4 +154,19 @@ class LaravelAuthTest extends \Orchestra\Testbench\TestCase
 		$logs = \Activity::getLogsBetween($yesterday, $tomorrow);
 		$this->assertNotNull($logs);
 	}
+
+    /**
+     * Test getting the most recent logs.
+     *
+     * @test
+     */
+    public function testGettingRecentLogs()
+    {
+        $log = \Activity::log('Just another log');
+        $log = \Activity::log('And another');
+        $log = \Activity::log('And another one');
+
+        $recent = \Activity::getRecentLogs(3);
+        $this->assertObjectHasAttribute('items', $recent, 'Getting the recent logs failed');
+    }
 }

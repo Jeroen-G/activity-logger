@@ -65,4 +65,15 @@ class ActivityLogger {
 	{
 		return Activity::whereBetween('created_at', array($start, $end))->get();
 	}
+
+	/**
+	 * Get the most recent logs.
+	 *
+	 * @param int $number (optional) The number of logs to retrieve, default is 5.
+	 * @return object
+	 */
+	public function getRecentLogs($number = 5)
+	{
+		return Activity::take($number)->get();
+	}
 }
