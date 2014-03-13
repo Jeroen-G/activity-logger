@@ -51,7 +51,7 @@ class Activity extends \Eloquent {
 	 */
 	public function setContextAttribute($value)
 	{
-		return json_encode($value);
+		$this->attributes['context'] = json_encode($value);
 	}
 
 	/**
