@@ -51,7 +51,7 @@ class ActivityLogger {
 	 */
 	public function getAllLogs()
 	{
-		return Activity::all();
+		return Activity::orderBy('created_at', 'desc')->get();
 	}
 
 	/**
@@ -63,7 +63,7 @@ class ActivityLogger {
 	 */
 	public function getLogsBetween($start, $end)
 	{
-		return Activity::whereBetween('created_at', array($start, $end))->get();
+		return Activity::whereBetween('created_at', array($start, $end))->orderBy('created_at', 'desc')->get();
 	}
 
 	/**
@@ -74,6 +74,6 @@ class ActivityLogger {
 	 */
 	public function getRecentLogs($number = 5)
 	{
-		return Activity::take($number)->get();
+		return Activity::take($number)->orderBy('created_at', 'desc')->get();
 	}
 }
