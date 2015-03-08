@@ -1,23 +1,27 @@
 Activity Logger
 =====================
 
-A simple activity logger for Laravel.
+A simple activity logger for Laravel 5. For laravel 4, use version 1 of this package.
 
 [![Build Status](https://travis-ci.org/Jeroen-G/activity-logger.png?branch=master)](https://travis-ci.org/Jeroen-G/activity-logger)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/badges/quality-score.png?s=bd15e13c2a26810c8109bc1f4d7569c06f5d916c)](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/)
-[![Latest Stable Version](https://poser.pugx.org/jeroen-g/activity-logger/v/stable.png)](https://packagist.org/packages/jeroen-g/activity-logger)
+[![Latest Stable Version](https://img.shields.io/github/release/jeroen-g/activity-logger.svg?style=flat)](https://github.com/jeroen-g/activity-logger/releases)
+[![License](https://img.shields.io/badge/License-EUPL--1.1-blue.svg?style=flat)](license.md)
+
 
 ## Installation ##
 
-Add this line to your `composer.json`
+Via Composer
+``` bash
+$ composer require jeroen-g/activity-logger
+```
 
-	"jeroen-g/activity-logger": "dev-master"
+The following command installs the package without the testing requirements.
+``` bash
+$ composer require jeroen-g/activity-logger --update-no-dev
+```
 
-Then update Composer
-
-    composer update
-
-Add the service provider in `app/config/app.php`:
+Add the service provider in `config/app.php`:
 
     'JeroenG\ActivityLogger\ActivityLoggerServiceProvider',
 
@@ -25,9 +29,13 @@ And in the same file, add the alias:
 
 	'Activity'		  => 'JeroenG\ActivityLogger\Facades\ActivityLogger',
 
-Then migrate to create the table for the activities
+Then publish the package's migration files.
 
-	php artisan migrate --package="jeroen-g/activity-logger"
+    $ artisan vendor:publish
+
+The last thing to do is to migrate:
+
+    $ artisan migrate
 
 ## Usage ##
 
