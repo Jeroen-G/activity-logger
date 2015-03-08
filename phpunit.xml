@@ -11,12 +11,16 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Laravel Activity Logger Test Suite">
-            <directory suffix=".php">./tests</directory>
+            <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">src/JeroenG/</directory>
+            <directory>src/JeroenG/</directory>
+            <exclude>
+                <directory>src/JeroenG/ActivityLogger/Facades/</directory>
+                <file>src/JeroenG/ActivityLogger/ActivityLoggerServiceProvider.php</file>
+            </exclude>
         </whitelist>
     </filter>
     <logging>
