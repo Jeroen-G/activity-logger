@@ -21,7 +21,6 @@ class ActivityLoggerTest extends TestCase
      */
     public function createApplication()
     {
-        die(var_dump(app_path()));
         $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
 
         $app->register('JeroenG\ActivityLogger\ActivityLoggerServiceProvider');
