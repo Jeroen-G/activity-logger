@@ -31,7 +31,7 @@ class ActivityLoggerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->publishes([
-            __DIR__.'/.../../migrations' => $this->app->databasePath().'/migrations',
+            __DIR__.'/../../migrations' => $this->app->databasePath().'/migrations',
         ]);
 	}
 
