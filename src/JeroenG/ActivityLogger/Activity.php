@@ -1,5 +1,7 @@
 <?php namespace JeroenG\ActivityLogger;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * This is the activity model.
  *
@@ -8,7 +10,7 @@
  * @author 	JeroenG
  * 
  **/
-class Activity extends \Eloquent {
+class Activity extends Model {
 
 	/**
 	 * The database table used by the model.

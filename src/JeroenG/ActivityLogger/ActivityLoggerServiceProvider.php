@@ -5,9 +5,11 @@ use Illuminate\Support\ServiceProvider;
 /**
  * This is the service provider for Laravel.
  *
- * Place the line below in the providers array inside app/config/app.php
+ * Place the line below in the providers array inside config/app.php
  * <code>'JeroenG\ActivityLogger\ActivityLoggerServiceProvider',</code>
- *
+ * And this line into the alias array in the same file
+ * <code>'Activity' => 'JeroenG\ActivityLogger\Facades\ActivityLogger',</code>
+ * 
  * @package ActivityLogger
  * @author 	JeroenG
  * 
@@ -28,7 +30,9 @@ class ActivityLoggerServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('jeroen-g/activity-logger');
+		$this->publishes([
+            __DIR__.'/.../../migrations' => $this->app->databasePath().'/migrations',
+        ]);
 	}
 
 	/**
