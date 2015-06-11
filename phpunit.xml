@@ -16,18 +16,11 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory>src/JeroenG/</directory>
+            <directory>src/</directory>
             <exclude>
-                <directory>src/JeroenG/ActivityLogger/Facades/</directory>
-                <file>src/JeroenG/ActivityLogger/ActivityLoggerServiceProvider.php</file>
+                <directory>src/Facades/</directory>
+                <file>src/ActivityLoggerServiceProvider.php</file>
             </exclude>
         </whitelist>
     </filter>
-    <logging>
-        <log type="tap" target="build/report.tap"/>
-        <log type="junit" target="build/report.junit.xml"/>
-        <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true"/>
-        <log type="coverage-text" target="build/coverage.txt"/>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
 </phpunit>

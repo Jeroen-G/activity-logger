@@ -1,7 +1,5 @@
 <?php
 
-//use Mockery as m;
-use Illuminate\Foundation\Testing\TestCase;
 use JeroenG\ActivityLogger\ActivityLogger;
 
 /**
@@ -14,21 +12,6 @@ use JeroenG\ActivityLogger\ActivityLogger;
  **/
 class ActivityLoggerTest extends TestCase
 {
-    /**
-     * Boots the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
-    {
-        $app = require __DIR__.'/../vendor/laravel/laravel/bootstrap/app.php';
-
-        $app->register('JeroenG\ActivityLogger\ActivityLoggerServiceProvider');
-
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
-
-        return $app;      
-    }
 
     /**
      * Setup DB before each test.
