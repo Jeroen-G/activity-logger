@@ -65,4 +65,13 @@ class Activity extends Model {
 	{
 		return json_decode($value);
 	}
+
+	/**
+	 * Delete all logs (not way back!).
+	 * @return void
+	 */
+	public static function deleteAll()
+	{
+		return \DB::table('activities')->delete();
+	}
 }

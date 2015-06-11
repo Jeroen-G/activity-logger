@@ -76,4 +76,13 @@ class ActivityLogger {
 	{
 		return Activity::take($number)->orderBy('created_at', 'desc')->get();
 	}
+
+	/**
+	 * Delete all logs (not way back!).
+	 * @return void
+	 */
+	public function deleteAll()
+	{
+		return Activity::deleteAll();
+	}
 }

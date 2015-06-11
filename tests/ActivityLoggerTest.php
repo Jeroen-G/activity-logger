@@ -39,7 +39,7 @@ class ActivityLoggerTest extends TestCase
     { 
         $classFinder = $this->app->make('Illuminate\Filesystem\ClassFinder');
         
-        $path = realpath(__DIR__ . "/../src/migrations");
+        $path = realpath(__DIR__ . "/../migrations");
         $files = glob($path.'/*');
 
         foreach($files as $file)
@@ -123,5 +123,15 @@ class ActivityLoggerTest extends TestCase
         $log = $this->logger->log('And another one');
         $recent = $this->logger->getRecentLogs(3);
         $this->assertObjectHasAttribute('items', $recent, 'Getting the recent logs failed');
+    }
+
+    public function testDeletingAllLogs()
+    {
+        $log = $this->logger->log('Just another log');
+        $log = $this->logger->log('And another');
+        $log = $this->logger->log('And another one');
+        $this->logger->deleteAll();
+        $logs = $this->logger->getAllLogs();
+        $this->assertObjectHasAttribute('items', $logs, 'Deleting all logs failed');
     }
 }
