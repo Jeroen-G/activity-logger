@@ -6,9 +6,9 @@ use Illuminate\Support\ServiceProvider;
  * This is the service provider for Laravel.
  *
  * Place the line below in the providers array inside config/app.php
- * <code>'JeroenG\ActivityLogger\ActivityLoggerServiceProvider',</code>
+ * <code>JeroenG\ActivityLogger\ActivityLoggerServiceProvider::class,</code>
  * And this line into the alias array in the same file
- * <code>'Activity' => 'JeroenG\ActivityLogger\Facades\ActivityLogger',</code>
+ * <code>'Activity' => JeroenG\ActivityLogger\Facades\ActivityLogger::class,</code>
  * 
  * @package ActivityLogger
  * @author 	JeroenG
