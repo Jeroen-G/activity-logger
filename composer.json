@@ -1,6 +1,6 @@
 {
     "name": "jeroen-g/activity-logger",
-    "description": "An activity logger for Laravel 4 & 5.",
+    "description": "An activity logger for Laravel",
     "license": "EUPL-1.1",
     "authors": [
         {
@@ -11,14 +11,10 @@
     "homepage": "https://github.com/Jeroen-G/activity-logger",
     "keywords": ["Laravel", "Activity", "Logger"],
     "require": {
-        "php": ">=5.3.0",
-        "illuminate/support": "~5.0"
+        "illuminate/support": "~5"
     },
     "require-dev": {
-        "mockery/mockery": "~0.9",
-        "phpunit/phpunit": "4.*",
-        "laravel/laravel": "~5.0",
-        "scrutinizer/ocular": "~1.1"
+        "phpunit/phpunit": "~4.0"
     },
     "autoload": {
         "classmap": [
