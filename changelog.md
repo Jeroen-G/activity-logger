@@ -2,6 +2,13 @@
 
 All Notable changes to `JeroenG\ActivityLogger` will be documented in this file
 
+## V2.1
+
+### Added
+- Laravel 5.5 package autodiscovery
+- Testbench for tests
+- TravisCI and StyleCI
+
 ## V2.0
 This version is being build on, and for, Laravel 5 (should work at least on 5.0 and 5.1). Laravel 4.x users should stick to version 1.x.
 

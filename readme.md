@@ -1,7 +1,7 @@
 Activity Logger
 =====================
 
-A simple activity logger for Laravel 5. For laravel 4, use version 1 of this package.
+A simple activity logger for Laravel.
 
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/badges/quality-score.png?s=bd15e13c2a26810c8109bc1f4d7569c06f5d916c)](https://scrutinizer-ci.com/g/Jeroen-G/activity-logger/)
 [![Latest Stable Version](https://img.shields.io/github/release/jeroen-g/activity-logger.svg?style=flat)](https://github.com/jeroen-g/activity-logger/releases)
@@ -20,6 +20,7 @@ The following command installs the package without the testing requirements.
 $ composer require jeroen-g/activity-logger --update-no-dev
 ```
 
+Laravel 5.5 automatically installs the package, for previous versions, follow the next two steps. After that, don't forget to run `php artisan migrate`
 Add the service provider in `config/app.php`:
 
     JeroenG\ActivityLogger\ActivityLoggerServiceProvider::class,
@@ -27,14 +28,6 @@ Add the service provider in `config/app.php`:
 And in the same file, add the alias:
 
 	'Activity' =>  JeroenG\ActivityLogger\Facades\ActivityLogger::class,
-
-Then publish the package's migration files.
-
-    $ artisan vendor:publish
-
-The last thing to do is to migrate:
-
-    $ artisan migrate
 
 ## Usage ##
 

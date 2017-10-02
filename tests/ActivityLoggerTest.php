@@ -1,5 +1,9 @@
 <?php
 
+namespace JeroenG\LaravelPages\Tests;
+
+use Orchestra\Testbench\TestCase;
+use Carbon\Carbon;
 use JeroenG\ActivityLogger\ActivityLogger;
 
 /**
@@ -12,43 +16,51 @@ use JeroenG\ActivityLogger\ActivityLogger;
  **/
 class ActivityLoggerTest extends TestCase
 {
-
     /**
-     * Setup DB before each test.
+     * The ActivityLogger instance
+     * @var object
+     */
+    protected $logger;
+
+     /**
+     * Setup before each test.
      *
-     * @return void  
+     * @return void
      */
     public function setUp()
-    { 
+    {
         parent::setUp();
 
-        $this->app['config']->set('database.default','sqlite'); 
-        $this->app['config']->set('database.connections.sqlite.database', ':memory:');
-
-        $this->migrate();
+        $this->artisan('migrate', ['--database' => 'testbench']);
 
         $this->logger = new ActivityLogger();
     }
 
     /**
-     * run package database migrations
+     * Tell Testbench to use this package.
+     * @param $app
+     * @return array
+     */
+    protected function getPackageProviders($app)
+    {
+        return ['JeroenG\ActivityLogger\ActivityLoggerServiceProvider'];
+    }
+
+    /**
+     * Define environment setup.
      *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
-    public function migrate()
-    { 
-        $classFinder = $this->app->make('Illuminate\Filesystem\ClassFinder');
-        
-        $path = realpath(__DIR__ . "/../migrations");
-        $files = glob($path.'/*');
-
-        foreach($files as $file)
-        {
-            require_once $file;
-            $migrationClass = $classFinder->findClass($file);
-
-            (new $migrationClass)->up();
-        }
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
     }
 
     public function testAddingSimpleLog()
@@ -74,7 +86,7 @@ class ActivityLoggerTest extends TestCase
      */
     public function testAddingLogWithContextAndDate()
     {
-        $yesterday = Carbon\Carbon::yesterday();
+        $yesterday = Carbon::yesterday();
         $log = $this->logger->log('Hello ', array('greeting' => 'universe'), $yesterday);
         $this->assertObjectHasAttribute('attributes', $log, 'Adding a log with context and date failed');
     }
@@ -106,8 +118,8 @@ class ActivityLoggerTest extends TestCase
      */
     public function testGettingLogsInTimespan()
     {
-        $tomorrow = Carbon\Carbon::tomorrow();
-        $yesterday = Carbon\Carbon::yesterday();
+        $tomorrow = Carbon::tomorrow();
+        $yesterday = Carbon::yesterday();
         $logs = $this->logger->getLogsBetween($yesterday, $tomorrow);
         $this->assertNotNull($logs);
     }
