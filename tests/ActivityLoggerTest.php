@@ -2,27 +2,24 @@
 
 namespace JeroenG\LaravelPages\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Carbon\Carbon;
+use Orchestra\Testbench\TestCase;
 use JeroenG\ActivityLogger\ActivityLogger;
 
 /**
- * This is for testing the package
+ * This is for testing the package.
  *
- * @package ActivityLogger
- * @subpackage Tests
  * @author  JeroenG
- * 
  **/
 class ActivityLoggerTest extends TestCase
 {
     /**
-     * The ActivityLogger instance
+     * The ActivityLogger instance.
      * @var object
      */
     protected $logger;
 
-     /**
+    /**
      * Setup before each test.
      *
      * @return void
@@ -76,9 +73,10 @@ class ActivityLoggerTest extends TestCase
      */
     public function testAddingLogWithContext()
     {
-        $log = $this->logger->log('Hello ', array('greeting' => 'universe', 'awesomeness' => 9000));
+        $log = $this->logger->log('Hello ', ['greeting' => 'universe', 'awesomeness' => 9000]);
         $this->assertObjectHasAttribute('attributes', $log, 'Adding a log with context failed');
     }
+
     /**
      * Test adding a log with message, context and date.
      *
@@ -87,9 +85,10 @@ class ActivityLoggerTest extends TestCase
     public function testAddingLogWithContextAndDate()
     {
         $yesterday = Carbon::yesterday();
-        $log = $this->logger->log('Hello ', array('greeting' => 'universe'), $yesterday);
+        $log = $this->logger->log('Hello ', ['greeting' => 'universe'], $yesterday);
         $this->assertObjectHasAttribute('attributes', $log, 'Adding a log with context and date failed');
     }
+
     /**
      * Test getting all logs.
      *
@@ -100,6 +99,7 @@ class ActivityLoggerTest extends TestCase
         $logs = $this->logger->getAllLogs();
         $this->assertObjectHasAttribute('items', $logs, 'Getting all logs failed');
     }
+
     /**
      * Test getting a single log.
      *
@@ -111,6 +111,7 @@ class ActivityLoggerTest extends TestCase
         $log = $this->logger->getLog(1);
         $this->assertNotNull($log);
     }
+
     /**
      * Test getting all logs created between yesterday and tomorrow.
      *
@@ -123,6 +124,7 @@ class ActivityLoggerTest extends TestCase
         $logs = $this->logger->getLogsBetween($yesterday, $tomorrow);
         $this->assertNotNull($logs);
     }
+
     /**
      * Test getting the most recent logs.
      *
