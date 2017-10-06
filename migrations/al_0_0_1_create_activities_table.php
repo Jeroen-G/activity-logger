@@ -16,7 +16,7 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->string('message');
             $table->text('context')->nullable();
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
